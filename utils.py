@@ -24,7 +24,7 @@ def vt_file(file_path):
     return format_resp_data(file_path, permalink, resource, scan_id, sha1, sha256, verbose_msg)
 
 
-def format_resp_data(file_path, permalink, resource, scan_id, sha1, sha256, verbose_msg):
+def format_resp_data(file_path, permalink, resource, scan_id, sha1, sha256):
     sc_url= f"https://api.screenshotmachine.com?key=fdb8bf&url={permalink}&dimension=1024x768"
     img_data = requests.get(sc_url).content
     f_name = f"{str(uuid.uuid4()).upper()}.jpeg"
@@ -44,4 +44,4 @@ def format_resp_data(file_path, permalink, resource, scan_id, sha1, sha256, verb
     embed.add_field(name="SHA256:", value=sha256, inline=False)
     embed.set_footer(text="Results provided by VirusTotal")
 
-    return embed, file
+    return embed, file, f_name

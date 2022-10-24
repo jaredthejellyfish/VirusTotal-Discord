@@ -12,11 +12,13 @@ DT_API_KEY = os.environ.get('DT_API_KEY')
 
 @bot.event
 async def on_ready():
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="for files to scan"))
     print(f"Connected as {bot.user}")
 
 
-@bot.slash_command(name="ping")
+@bot.slash_command(name="ping", description="Pings the bot")
 async def ping(ctx):
+
     await ctx.respond(f"🏓 Pong ({round(bot.latency * 1000)}ms)")
 
 
@@ -24,9 +26,9 @@ async def ping(ctx):
 @option(
     "attachment",
     discord.Attachment,
-    description="A file to attach to the message",
+    description="A mischievous attachment to scan...",
     # The default value will be None if the user doesn't provide a file.
-    required=False,
+    required=True,
 )
 async def say(
     ctx: discord.ApplicationContext,
@@ -36,11 +38,12 @@ async def say(
         await ctx.defer()
         file = await attachment.to_file()
         await attachment.save(file.filename)
-        embed, file = vt_file(file.filename)
+        embed, img, f_name = vt_file(file.filename)
         os.remove(file.filename)
-        
-        await ctx.respond(embed=embed, file=file)
+        await ctx.respond(embed=embed, file=img)
+        os.remove(f_name)
     else:
         await ctx.respond("You didn't give me a file to reply with! :sob:")
+
 
 bot.run(DT_API_KEY)
