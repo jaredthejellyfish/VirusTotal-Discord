@@ -1,6 +1,6 @@
 import discord
 from discord import option
-from utils import vt_file, format_resp_data
+from utils import vt_file
 import time
 import os
 
@@ -18,8 +18,10 @@ async def on_ready():
 
 @bot.slash_command(name="ping", description="Pings the bot")
 async def ping(ctx):
-
-    await ctx.respond(f"🏓 Pong ({round(bot.latency * 1000)}ms)")
+    embed=discord.Embed(color=0x333aff)
+    embed.add_field(name="🏓 Pong! ", value=f"The bot latency is {round(bot.latency * 1000)}ms", inline=False)
+    await ctx.respond(embed=embed)
+    #await ctx.respond(f"🏓 Pong ({round(bot.latency * 1000)}ms)")
 
 
 @bot.slash_command(name="check")

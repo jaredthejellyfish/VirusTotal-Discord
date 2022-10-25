@@ -21,7 +21,7 @@ def vt_file(file_path):
     sha256 = resp['sha256']
     verbose_msg = resp['verbose_msg']
 
-    return format_resp_data(file_path, permalink, resource, scan_id, sha1, sha256, verbose_msg)
+    return format_resp_data(file_path, permalink, resource, scan_id, sha1, sha256)
 
 
 def format_resp_data(file_path, permalink, resource, scan_id, sha1, sha256):
