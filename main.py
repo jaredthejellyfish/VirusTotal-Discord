@@ -21,7 +21,7 @@ async def ping(ctx):
     embed=discord.Embed(color=0x333aff)
     embed.add_field(name="🏓 Pong! ", value=f"The bot latency is {round(bot.latency * 1000)}ms", inline=False)
     await ctx.respond(embed=embed)
-    #await ctx.respond(f"🏓 Pong ({round(bot.latency * 1000)}ms)")
+
 
 
 @bot.slash_command(name="check")
