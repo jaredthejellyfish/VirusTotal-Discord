@@ -8,7 +8,7 @@ intents = discord.Intents.all()
 
 bot = discord.Bot(intents=intents)
 
-DT_API_KEY = os.environ.get('DT_API_KEY')
+DT_API_KEY = "MTAzMTkxNDUyNDAzMjM2ODY0MA.GThoNX.rF0HMbdYrTSwMRCk02ZLR3qJ1NkfLbePz6V3No"#os.environ.get('DT_API_KEY')
 
 @bot.event
 async def on_ready():
@@ -42,7 +42,7 @@ async def say(
         await attachment.save(file.filename)
         embed, img, f_name = vt_file(file.filename)
         os.remove(file.filename)
-        await ctx.respond(embed=embed, file=img)
+        await ctx.send_followup(embed=embed, file=img)
         os.remove(f_name)
     else:
         await ctx.respond("You didn't give me a file to reply with! :sob:")
