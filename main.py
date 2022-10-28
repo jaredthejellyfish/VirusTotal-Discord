@@ -8,7 +8,7 @@ intents = discord.Intents.all()
 
 bot = discord.Bot(intents=intents)
 
-DT_API_KEY = "MTAzMTkxNDUyNDAzMjM2ODY0MA.GThoNX.rF0HMbdYrTSwMRCk02ZLR3qJ1NkfLbePz6V3No"#os.environ.get('DT_API_KEY')
+DT_API_KEY = os.environ.get('DT_API_KEY')
 
 @bot.event
 async def on_ready():

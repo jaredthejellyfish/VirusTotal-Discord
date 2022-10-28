@@ -5,7 +5,7 @@ import discord
 import requests 
 import uuid
 
-API_KEY = "5e5fea4533f9347bff1d2003d87dc5c70437196e0d2649dd34909c57c0924ce2"#os.environ.get('VT_API_KEY')
+API_KEY = os.environ.get('VT_API_KEY')
 
 def vt_file(file_path):
     files = {"file": (os.path.basename(file_path),
